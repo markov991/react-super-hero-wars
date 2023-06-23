@@ -1,0 +1,11 @@
+.main-content-screen {
+  background-image: linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.3)),
+    url(../../images/background--img.jpg);
+  height: 95vh;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-position: center center;
+  background-repeat: no-repeat;
+  gap: 3.6rem;
+}

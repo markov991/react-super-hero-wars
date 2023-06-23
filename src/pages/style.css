@@ -1,0 +1,27 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: aqua;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: rgb(233, 233, 233);
+}
+#gatsby-focus-wrapper {
+  min-height: 100vh;
+  /* height: 200px; */
+  display: flex;
+  flex-direction: column;
+
+  background-color: brown;
+}
+#footer {
+  margin-top: auto;
+}
+h1 {
+  margin: 0;
+}
