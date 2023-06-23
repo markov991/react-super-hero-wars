@@ -1,0 +1,18 @@
+.add-hero-button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  /* I have 3px line in bottom research about that  temp fix with line bellow */
+  background-color: #333;
+}
+.ionicon {
+  width: 10rem;
+  height: 10rem;
+  /* fill: black; */
+  fill: aqua;
+  background-color: #333;
+  color: aliceblue;
+  /* stroke-width: 10rem;
+  font-size: 10rem;
+  --ionicon-stroke-width: 16px; */
+}

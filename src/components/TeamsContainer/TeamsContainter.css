@@ -1,0 +1,6 @@
+.teams-containter {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  justify-content: center;
+  gap: 3rem;
+}

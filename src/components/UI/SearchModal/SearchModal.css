@@ -1,0 +1,9 @@
+.search-modal {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.418);
+
+
+}
