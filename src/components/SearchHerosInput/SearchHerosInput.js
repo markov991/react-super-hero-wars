@@ -1,11 +1,15 @@
 import React from "react";
+
 import "./SearchHerosInput.css";
 
-const SearchHerosInput = () => {
+const SearchHerosInput = ({ searchPar }) => {
+  const searchHeroHandler = (e) => {
+    searchPar(e.target.value);
+  };
   return (
     <div className="search-heroes-input-container">
       <div className="search-input-box">
-        <input type="text" />
+        <input onChange={searchHeroHandler} type="text" />
         <div className="search-inpit-icons-box">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,17 +28,17 @@ const SearchHerosInput = () => {
             <path
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="32"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="32"
               d="M448 341.37V170.61A32 32 0 00432.11 143l-152-88.46a47.94 47.94 0 00-48.24 0L79.89 143A32 32 0 0064 170.61v170.76A32 32 0 0079.89 369l152 88.46a48 48 0 0048.24 0l152-88.46A32 32 0 00448 341.37z"
             />
             <path
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="32"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="32"
               d="M69 153.99l187 110 187-110M256 463.99v-200"
             />
             <ellipse cx="256" cy="152" rx="24" ry="16" />
