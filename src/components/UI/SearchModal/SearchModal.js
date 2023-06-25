@@ -1,14 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "./SearchModal.css";
 import SearchHerosInput from "../../SearchHerosInput/SearchHerosInput";
+import HeroInfoModal from "../HeroInfoModal/HeroInfoModal";
 
-const SearchModal = ({ searchPar, searchResults, heroInfoHandler }) => {
+const SearchModal = ({ searchPar, searchResults }) => {
   const [results, setResults] = useState([]);
+  const [heroInfo, SetHeroInfo] = useState({});
+  const [openHeroInfoModal, setOpenHeroInfoModal] = useState(false);
 
   useEffect(() => {
     setResults(searchResults);
     console.log(results);
   }, [searchResults]);
+
+  const heroInfoHandler = (e) => {
+    setOpenHeroInfoModal(true);
+    SetHeroInfo(e);
+    console.log(e);
+  };
+  const closeHandle = (e) => {
+    e.preventDefault();
+    setOpenHeroInfoModal(false);
+  };
+
+  console.log(heroInfoHandler);
 
   return (
     <div className="search-modal">
@@ -22,6 +37,9 @@ const SearchModal = ({ searchPar, searchResults, heroInfoHandler }) => {
             </div>
           ))}
       </div>
+      {openHeroInfoModal && (
+        <HeroInfoModal closeHandle={closeHandle} hero={heroInfo} />
+      )}
     </div>
   );
 };

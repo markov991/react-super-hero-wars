@@ -62,9 +62,9 @@ const Main = () => {
     }
   };
 
-  const heroInfoHandler = (e) => {
-    console.log(e);
-  };
+  // const heroInfoHandler = (e) => {
+  //   console.log(e);
+  // };
 
   return (
     <div className="main-content-screen">
@@ -72,7 +72,7 @@ const Main = () => {
       <Team addingHeroHandeler={addHeroHandelerTeamTwo} teamName={2} />
       {searchModal && (
         <SearchModal
-          heroInfoHandler={heroInfoHandler}
+          // heroInfoHandler={heroInfoHandler}
           searchResults={data}
           searchPar={searchInputPar}
         />
