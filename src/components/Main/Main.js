@@ -5,9 +5,22 @@ import Team from "../Team/Team";
 import SearchModal from "../UI/SearchModal/SearchModal";
 
 const Main = () => {
+  const [teamOne, setTeamOne] = useState([]);
+  const [teamTwo, setTeamTwo] = useState([]);
+
   const [searchPar, setSearchPar] = useState();
   const [data, setData] = useState();
   const [searchModal, setSearchModal] = useState(false);
+  // const [openHeroInfoModal, setOpenHeroInfoModal] = useState(false);
+
+  useEffect(() => {
+    fetch("https://akabab.github.io/superhero-api/api/all.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setTeamOne([...teamOne, data[Math.floor(Math.random() * data.length)]]);
+        setTeamTwo([...teamTwo, data[Math.floor(Math.random() * data.length)]]);
+      });
+  }, []);
 
   useEffect(() => {
     if (searchPar) {
@@ -68,8 +81,16 @@ const Main = () => {
 
   return (
     <div className="main-content-screen">
-      <Team addingHeroHandeler={addHeroHandelerTeamOne} teamName={1} />
-      <Team addingHeroHandeler={addHeroHandelerTeamTwo} teamName={2} />
+      <Team
+        teamHeroes={teamOne}
+        addingHeroHandeler={addHeroHandelerTeamOne}
+        teamName={1}
+      />
+      <Team
+        teamHeroes={teamTwo}
+        addingHeroHandeler={addHeroHandelerTeamTwo}
+        teamName={2}
+      />
       {searchModal && (
         <SearchModal
           // heroInfoHandler={heroInfoHandler}

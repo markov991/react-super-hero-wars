@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./TeamsContainter.css";
 import AddHeroButton from "../UI/AddHeroButton/AddHeroButton";
 
 const TeamsContainter = ({ teamHeroes, addingHeroHandeler }) => {
+  const [heroList, setHeroList] = useState([]);
+
+  useEffect(() => {
+    setHeroList(teamHeroes);
+  }, [teamHeroes]);
+
   return (
     <div className="teams-containter">
-      {teamHeroes.map((hero) => {
-        <div>
-          <img class="hero-img" src={hero.img} alt="" />
-        </div>;
-      })}
+      {heroList.map((hero) => (
+        <div key={hero.id}>
+          <img className="hero-containter-img" src={hero.images.sm} alt="" />
+        </div>
+      ))}
       <AddHeroButton addingHeroHandeler={addingHeroHandeler} />
     </div>
   );
