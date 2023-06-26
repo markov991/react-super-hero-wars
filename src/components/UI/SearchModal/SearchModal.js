@@ -10,7 +10,6 @@ const SearchModal = ({ searchPar, searchResults, addingHeroToTeam }) => {
 
   useEffect(() => {
     setResults(searchResults);
-    console.log(results);
   }, [searchResults]);
 
   const heroInfoHandler = (e) => {
@@ -43,6 +42,7 @@ const SearchModal = ({ searchPar, searchResults, addingHeroToTeam }) => {
       </div>
       {openHeroInfoModal && (
         <HeroInfoModal
+          locationOfComponent={"SEARCH_MODAL"}
           addHeroHandle={addHeroHandle}
           closeHandle={closeHandle}
           hero={heroInfo}

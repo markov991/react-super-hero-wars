@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./HeroInfoModal.css";
 
-const HeroInfoModal = ({ hero, closeHandle, addHeroHandle }) => {
+const HeroInfoModal = ({
+  hero,
+  closeHandle,
+  addHeroHandle,
+  locationOfComponent,
+  removeHeroHandle,
+}) => {
+  const [addBtnIsActive, setAddBtnIsActive] = useState(false);
+  const [removeBtnIsActive, setRemoveBtnIsActive] = useState(false);
+
+  useEffect(() => {
+    if (locationOfComponent === "SEARCH_MODAL") {
+      setAddBtnIsActive(true);
+      setRemoveBtnIsActive(false);
+    }
+    if (locationOfComponent === "TEAM_MODAL") {
+      setRemoveBtnIsActive(true);
+      setAddBtnIsActive(false);
+    }
+  }, []);
+
   return (
     <div className="hero-info-modal">
       <img className="hero-img" src={hero.images.sm} />\
@@ -28,7 +48,10 @@ const HeroInfoModal = ({ hero, closeHandle, addHeroHandle }) => {
           </div>
         </div>
         <div className="modal-info-btns">
-          <button onClick={addHeroHandle}>Add</button>
+          {addBtnIsActive && <button onClick={addHeroHandle}>Add</button>}
+          {removeBtnIsActive && (
+            <button onClick={removeHeroHandle}>Remove</button>
+          )}
           <button onClick={closeHandle}>Close</button>
         </div>
       </div>
