@@ -7,6 +7,7 @@ const TeamsContainter = ({ teamHeroes, addingHeroHandeler }) => {
 
   useEffect(() => {
     setHeroList(teamHeroes);
+    console.log(heroList);
   }, [teamHeroes]);
 
   return (

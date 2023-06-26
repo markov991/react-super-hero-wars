@@ -3,7 +3,7 @@ import "./SearchModal.css";
 import SearchHerosInput from "../../SearchHerosInput/SearchHerosInput";
 import HeroInfoModal from "../HeroInfoModal/HeroInfoModal";
 
-const SearchModal = ({ searchPar, searchResults }) => {
+const SearchModal = ({ searchPar, searchResults, addingHeroToTeam }) => {
   const [results, setResults] = useState([]);
   const [heroInfo, SetHeroInfo] = useState({});
   const [openHeroInfoModal, setOpenHeroInfoModal] = useState(false);
@@ -16,14 +16,18 @@ const SearchModal = ({ searchPar, searchResults }) => {
   const heroInfoHandler = (e) => {
     setOpenHeroInfoModal(true);
     SetHeroInfo(e);
-    console.log(e);
+
+    // console.log(e);
   };
+
+  const addHeroHandle = () => {
+    addingHeroToTeam(heroInfo);
+  };
+
   const closeHandle = (e) => {
     e.preventDefault();
     setOpenHeroInfoModal(false);
   };
-
-  console.log(heroInfoHandler);
 
   return (
     <div className="search-modal">
@@ -38,7 +42,11 @@ const SearchModal = ({ searchPar, searchResults }) => {
           ))}
       </div>
       {openHeroInfoModal && (
-        <HeroInfoModal closeHandle={closeHandle} hero={heroInfo} />
+        <HeroInfoModal
+          addHeroHandle={addHeroHandle}
+          closeHandle={closeHandle}
+          hero={heroInfo}
+        />
       )}
     </div>
   );
