@@ -56,6 +56,13 @@ const Team = ({ teamName }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const teamStrenght = team.map((hero) =>
+      Object.values(hero.powerstats).reduce((acc, cur) => acc + cur)
+    );
+    console.log(teamStrenght);
+  }, [team]);
+
   const searchInputPar = (e) => {
     if (e) {
       setSearchPar(e);
