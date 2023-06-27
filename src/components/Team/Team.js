@@ -66,10 +66,14 @@ const Team = ({ teamName }) => {
     setSearchModal(true);
   };
 
-  const addingHeroToTeam = (e) => {
-    setTeam([...team, e]);
-    setSearchModal(false);
-    console.log(e);
+  const addingHeroToTeam = (hero) => {
+    const heroIds = team.map((hero) => hero.id);
+    if (!heroIds.includes(hero.id)) {
+      setTeam([...team, hero]);
+      setSearchModal(false);
+    } else {
+      alert("You alreade have this hero in your team");
+    }
   };
 
   return (

@@ -11,6 +11,7 @@ const TeamsContainter = ({ teamHeroes, addingHeroHandeler }) => {
   useEffect(() => {
     setHeroList(teamHeroes);
   }, [teamHeroes, heroList]);
+
   const heroInfoHandler = (e) => {
     setOpenHeroInfoModal(true);
     SetHeroInfo(e);
@@ -37,7 +38,9 @@ const TeamsContainter = ({ teamHeroes, addingHeroHandeler }) => {
           <img className="hero-containter-img" src={hero.images.sm} />
         </div>
       ))}
-      <AddHeroButton addingHeroHandeler={addingHeroHandeler} />
+      {heroList.length < 5 && (
+        <AddHeroButton addingHeroHandeler={addingHeroHandeler} />
+      )}
       {openHeroInfoModal && (
         <HeroInfoModal
           removeHeroHandle={removeHeroHandle}

@@ -15,8 +15,6 @@ const SearchModal = ({ searchPar, searchResults, addingHeroToTeam }) => {
   const heroInfoHandler = (e) => {
     setOpenHeroInfoModal(true);
     SetHeroInfo(e);
-
-    // console.log(e);
   };
 
   const addHeroHandle = () => {
