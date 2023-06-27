@@ -60,6 +60,7 @@ const Team = ({ teamName }) => {
     const teamStrenght = team.map((hero) =>
       Object.values(hero.powerstats).reduce((acc, cur) => acc + cur)
     );
+
     console.log(teamStrenght);
   }, [team]);
 
@@ -83,10 +84,17 @@ const Team = ({ teamName }) => {
     }
   };
 
+  const removeHero = (heroId) => {
+    setTeam(team.filter((hero) => hero.id !== heroId));
+
+    console.log(heroId, team);
+  };
+
   return (
     <div>
       <h2 className="team-name">Team {teamName}</h2>
       <TeamsContainter
+        removeHeroId={removeHero}
         addingHeroHandeler={addingHeroHandeler}
         teamHeroes={team}
       />

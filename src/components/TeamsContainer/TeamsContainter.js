@@ -3,14 +3,15 @@ import "./TeamsContainter.css";
 import AddHeroButton from "../UI/AddHeroButton/AddHeroButton";
 import HeroInfoModal from "../UI/HeroInfoModal/HeroInfoModal";
 
-const TeamsContainter = ({ teamHeroes, addingHeroHandeler }) => {
+const TeamsContainter = ({ teamHeroes, addingHeroHandeler, removeHeroId }) => {
   const [heroList, setHeroList] = useState([]);
   const [openHeroInfoModal, setOpenHeroInfoModal] = useState(false);
   const [heroInfo, SetHeroInfo] = useState({});
 
   useEffect(() => {
     setHeroList(teamHeroes);
-  }, [teamHeroes, heroList]);
+    console.log(teamHeroes);
+  }, [teamHeroes]);
 
   const heroInfoHandler = (e) => {
     setOpenHeroInfoModal(true);
@@ -18,12 +19,15 @@ const TeamsContainter = ({ teamHeroes, addingHeroHandeler }) => {
   };
 
   const removeHeroHandle = () => {
-    setHeroList(
-      heroList.splice(
-        heroList.findIndex((hero) => hero.id === heroInfo.id),
-        1
-      )
-    );
+    // console.log(e);
+
+    removeHeroId(heroInfo.id);
+    // setHeroList(
+    //   heroList.splice(
+    //     heroList.findIndex((hero) => hero.id === heroInfo.id),
+    //     1
+    //   )
+    // );
     setOpenHeroInfoModal(false);
   };
 
