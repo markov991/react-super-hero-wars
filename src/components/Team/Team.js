@@ -3,7 +3,7 @@ import "./Team.css";
 import TeamsContainter from "../TeamsContainer/TeamsContainter";
 import SearchModal from "../UI/SearchModal/SearchModal";
 
-const Team = ({ teamName }) => {
+const Team = ({ teamName, teamStrenght }) => {
   const [searchModal, setSearchModal] = useState(false);
   const [team, setTeam] = useState([]);
 
@@ -57,11 +57,11 @@ const Team = ({ teamName }) => {
   }, []);
 
   useEffect(() => {
-    const teamStrenght = team.map((hero) =>
+    const teamStr = team.map((hero) =>
       Object.values(hero.powerstats).reduce((acc, cur) => acc + cur)
     );
 
-    console.log(teamStrenght);
+    teamStrenght(teamStr);
   }, [team]);
 
   const searchInputPar = (e) => {
@@ -86,8 +86,6 @@ const Team = ({ teamName }) => {
 
   const removeHero = (heroId) => {
     setTeam(team.filter((hero) => hero.id !== heroId));
-
-    console.log(heroId, team);
   };
 
   return (

@@ -10,7 +10,6 @@ const TeamsContainter = ({ teamHeroes, addingHeroHandeler, removeHeroId }) => {
 
   useEffect(() => {
     setHeroList(teamHeroes);
-    console.log(teamHeroes);
   }, [teamHeroes]);
 
   const heroInfoHandler = (e) => {
@@ -19,15 +18,8 @@ const TeamsContainter = ({ teamHeroes, addingHeroHandeler, removeHeroId }) => {
   };
 
   const removeHeroHandle = () => {
-    // console.log(e);
-
     removeHeroId(heroInfo.id);
-    // setHeroList(
-    //   heroList.splice(
-    //     heroList.findIndex((hero) => hero.id === heroInfo.id),
-    //     1
-    //   )
-    // );
+
     setOpenHeroInfoModal(false);
   };
 
