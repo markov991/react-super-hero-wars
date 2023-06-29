@@ -7,10 +7,26 @@ const SearchModal = ({ searchPar, searchResults, addingHeroToTeam }) => {
   const [results, setResults] = useState([]);
   const [heroInfo, SetHeroInfo] = useState({});
   const [openHeroInfoModal, setOpenHeroInfoModal] = useState(false);
+  const [randomHero, setRandomHero] = useState(null);
 
   useEffect(() => {
     setResults(searchResults);
   }, [searchResults]);
+
+  useEffect(() => {
+    if (randomHero) {
+      fetch("https://akabab.github.io/superhero-api/api/all.json")
+        .then((res) => res.json())
+        .then((data) => {
+          SetHeroInfo(data[randomHero]);
+          setOpenHeroInfoModal(true);
+        });
+    }
+  }, [randomHero]);
+
+  const randomHeroHandler = () => {
+    setRandomHero(Math.floor(Math.random() * 563));
+  };
 
   const heroInfoHandler = (e) => {
     setOpenHeroInfoModal(true);
@@ -28,7 +44,10 @@ const SearchModal = ({ searchPar, searchResults, addingHeroToTeam }) => {
 
   return (
     <div className="search-modal">
-      <SearchHerosInput searchPar={searchPar} />
+      <SearchHerosInput
+        randomHeroHandler={randomHeroHandler}
+        searchPar={searchPar}
+      />
       <div className="search-results">
         {results &&
           results.slice(0, 5).map((result) => (

@@ -71,6 +71,7 @@ const Team = ({ teamName, teamStrenght }) => {
   };
 
   const addingHeroHandeler = (e) => {
+    setData([]);
     setSearchModal(true);
   };
 
